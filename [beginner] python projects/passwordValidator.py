@@ -7,6 +7,7 @@ lowerCase_numberChar = 0
 numbers_numberChar = 0
 symbols_numberChar = 0
 password_length = 0
+
 for i in password:
     if i.isupper():
         upperCase_numberChar += 1
@@ -35,7 +36,6 @@ def ratePasswordLength():
 
 def ratePasswordVariety():
     rate_variety = ''
-    rate_complexity = '
     if upperCase_numberChar < 1:
         rate_variety += f'No Upper Case Characters \n'
     if lowerCase_numberChar < 1:
@@ -46,4 +46,30 @@ def ratePasswordVariety():
         rate_variety += f'No Symbol Characters \n'
 
     return rate_variety
+
+def ratePasswordComplexity():
+    rate_complexity = ''
+    password_type = []
+    for char in password:
+        if char.isupper():
+            password_type.append(0)
+        if char.islower():
+            password_type.append(1)
+        if char.isnumeric():
+            password_type.append(2)
+        if any(char in punctuation):
+            password_type.append(3)
+    print(password_type)
+
+    char_type:int = None
+    for x in range(len(password_type)):
+        if char_type == password_type[x]:
+            
+        if char_type == None:
+            char_type = password_type[x]
+        
+
+
+
+
 print(ratePasswordLength())     
