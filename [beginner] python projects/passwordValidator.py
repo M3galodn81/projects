@@ -19,18 +19,18 @@ for i in password:
         symbols_numberChar += 1
     password_length += 1
 
+# print(password_length)
 
-print(password_length)
 def ratePasswordLength():
     rate_password_length = ''
     if password_length <= 8:
-        rate_password_length = ' 1️⃣ | Needs to be longer than 12 characters'
+        rate_password_length = 'Needs to be longer than 12 characters'
     if password_length >= 8 and password_length < 12:
-        rate_password_length = ' 2️⃣ | Needs to be longer than 12 characters'
+        rate_password_length = 'Needs to be longer than 12 characters'
     if password_length >= 12 and password_length <16:
-        rate_password_length = ' 3️⃣ | Good enough'
+        rate_password_length = 'Good enough'
     if password_length >= 16:
-        rate_password_length = ' 4️⃣ | Best'
+        rate_password_length = 'Best'
     
     return rate_password_length
 
@@ -57,19 +57,32 @@ def ratePasswordComplexity():
             password_type.append(1)
         if char.isnumeric():
             password_type.append(2)
-        if any(char in punctuation):
+        if any(i in punctuation for i in char):
             password_type.append(3)
-    print(password_type)
+    # print(password_type)
 
     char_type:int = None
+    repeated_type = 0
     for x in range(len(password_type)):
+        # print(char_type,password_type[x])
         if char_type == password_type[x]:
-            
-        if char_type == None:
-            char_type = password_type[x]
-        
+            repeated_type += 1
+        char_type = password_type[x]
+    if repeated_type >= (0.5 * password_length):
+        rate_complexity += f'Password has mutliple similar characters'
+    if repeated_type >= (0.25 * password_length) and repeated_type < (0.50 * password_length):
+        rate_complexity += f'Password is complex enough'
+    if repeated_type < (0.25 * password_length):
+        rate_complexity += f'Password is very complex'
+
+    return rate_complexity
 
 
+print(f'Length:')
+print(ratePasswordLength())
 
+print(f'Variety:')
+print(ratePasswordVariety())
 
-print(ratePasswordLength())     
+print(f'Complexity:')
+print(ratePasswordComplexity())
