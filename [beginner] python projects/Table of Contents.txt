@@ -1,0 +1,20 @@
+
+                        |===============================|
+                        |    BEGINNER PYTHON PROJECTS   |
+                        |===============================|
+
+Basics
+1. Password Generator                     |   Completed
+2. Password Validator                     |   Completed
+
+Games
+1. Hangman                                |   Completed
+2. Tic Tac Toe                            |   Will be completed soon | Im not having fun
+
+Apps
+1.Binary to Decimal Convertor
+    Status: Completed
+2. Calculator with Kivy GUI
+    Status: Pending
+    
+
