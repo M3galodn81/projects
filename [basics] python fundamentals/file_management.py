@@ -32,6 +32,18 @@ data['name'] = name_input
 data['age'] = age_input
 data['occupation'] = occupation_input
 
-f = open('test.txt','w')
+f = open('test.txt','w') # create a file and write on it
 f.writelines(str(data))
 f.close()
+
+r = open('test.txt','r')  #reads
+print(r.read())
+r.close()
+
+import os
+
+if os.path.exists('test.txt'):
+    os.remove('test.txt')
+    print('Removed test.txt')
+else:
+    print('The file does not exist')
